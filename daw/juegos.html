@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Juegos</title>
+	<style>
+		body{
+			margin:0;
+			font-family: Verdana, sans-serif;
+		}
+		.table{
+			width:1150px;
+			height:550px;
+		}
+		.menu{
+			background: #ffc;
+			border-radius:50px 50px 50px 50px;
+		}
+		.td-juegos{
+			text-align:center;
+			background:#ffffff;
+			border-radius:25px;
+			width:200px;
+			animation: animarTexto 2s infinite alternate ease-in-out;
+		}
+		h1{
+			font-size: 26px;
+		}
+		.contenido-juego{
+			text-align:center;
+			border-radius:50px 50px 50px 50px;
+
+		}
+		@keyframes animarTexto {
+		    0%   { color: #ff6600; transform: scale(1.1); }
+		    50%  { color: #ffd700; transform: scale(1.3); }
+		    100% { color: #ff6600; transform: scale(1.1); }
+		}
+		a{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			valing:midle;
+			margin:0px;
+			font-family:Verdana;
+			font-size:12px;
+			font-weight:bold;
+			background-color: #21BCFF;
+			border:none;
+			text-decoration:none;
+			border-radius:25px 25px 25px 25px;
+			transition:all 0.3s ease;
+		}
+		a:hover{
+			background-color: #F8D844;
+			color: #ffffff;
+			box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+			transform: scale(1.05);
+		}
+	</style>
+</head>
+<body>
+	<table class="table" align="center" border="0" cellspacing="0" cellpadding="5">
+		<tr height="10px">
+			<td colspan="2" align="center">
+				<div class="td-juegos">
+					<h1>Juegos</h1>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="170px" height="30px" align="center">
+				<a href="https://wordwall.net/es/embed/fd40b254710846cba1d7e43d5f47f9b9?themeId=53&templateId=5&fontStackId=0" target="contenido-juego">
+					<img src="recursos/imagenes/caperucita/caperucitaroja.png" width="150px" height="75px">
+				</a>
+				<hr>
+				<a href=https://wordwall.net/es/embed/ab3cecd1e1264278b6320a8a82c42b3e?themeId=49&templateId=36&fontStackId=0" target="contenido-juego">
+					<img src="recursos/imagenes/cerditos/lostrescerditos.png" width="150px" height="75px">
+				</a>
+				<hr>
+				<a href="https://wordwall.net/es/embed/1d3b71f6787f40b4967962d16d2c8623?themeId=52&templateId=5&fontStackId=0" target="contenido-juego">
+					<img src="recursos/imagenes/hormiga/hormigaycigarra1.png" width="150px" height="75px">
+				</a>
+				<hr>
+				<a href="https://wordwall.net/es/embed/fa36bb68d8dc4f7fb0a7fa5345103621?themeId=27&templateId=5&fontStackId=0" target="contenido-juego">
+					<img src="recursos/imagenes/leon/leonyraton_min.png" width="150px" height="75px">
+				</a>
+				<hr>
+				<a href="https://wordwall.net/es/embed/f3a0f245cead491a982c9a08a83fa945?themeId=21&templateId=36&fontStackId=0" target="contenido-juego">
+					<img src="recursos/imagenes/flamencos/flam_min_2.png" width="150px" height="75px">
+				</a>
+			</td>
+			<td class="contenido-juego" colspan="5" background="recursos/imagenes/spikes.png">
+				<p>En esta sección encontrarás juegos interactivos basados en los cuentos.</p>
+				<p>Explora, aprende y diviértete reforzando lo que has leído.</p>
+				<p>Haz clic en un juego para comenzar.</p>
+				<iframe name="contenido-juego" src="https://wordwall.net/es/embed/fd40b254710846cba1d7e43d5f47f9b9?themeId=53&templateId=5&fontStackId=0" style="max-width:100%" width="500" height="380" frameborder="0" allowfullscreen>
+				</iframe>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+

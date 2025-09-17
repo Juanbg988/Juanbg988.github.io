@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>--Cuenta Cuentos--</title>
+		<style>
+			.table{
+				width:1200px;
+				height:1000px;
+			}
+			.superior{
+				background:#34698A;
+				text-aling:center;
+				font-size: 12;
+				font-weight:bold;
+				color:black;
+				border-radius:50px 50px 0px 0px;
+			}
+			.menu{
+				background: #ffc;
+			}
+			.contenido{
+				height:600px;
+				text-align:center;
+				background:#34698A;
+			}
+			
+			.footer{
+				height:100px;
+				text-align:center;
+				background:#34698A;
+				/*color:#fff;*/
+				border-radius:0px 0px 50px 50px;
+			}
+			a{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				width:170px;
+				height:130px;
+				valing:midle;
+				margin:0px;
+				font-family:Verdana;
+				font-size:12px;
+				font-weight:bold;
+				background-color: #21BCFF;
+				border:none;
+				text-decoration:none;
+				border-radius:25px 0px 25px 0px;
+				transition:all 0.3s ease;
+			}
+			a:hover{
+				background-color: #F8D844;
+				color: #ffffff;
+				box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
+				transform: scale(1.05);
+			}
+		</style>
+	</head>
+	<body background="recursos/imagenes/skulls.png">
+		<!-- CREACIÓN DE LA PÁGINA -->
+		<table class="table" align="center" border="0" cellspacing="0" cellpadding="5">
+			<tr>
+				<td height="250px" colspan="7" bgcolor="#ffffcc" align="center" class="superior">
+					<img src="recursos/imagenes/logocuentacuentos.png">
+				</td>
+			</tr>
+			<tr class="menu">
+				<td width="171px" height="50px" align="center" >
+					<a href="inicio.html" target="contenido">
+						<p>Inicio</p>
+						<img src="recursos/imagenes/flamencos/casita2.png" width="150px" height="75px">
+					</a>
+				</td>
+				<td width="171px" height="50px" align="center">
+					<a href="cuento1.html" target="contenido">
+						<p>Caperucita Roja</p>
+						<img src="recursos/imagenes/caperucita/caperucita_min.png" width="150px" height="75px">
+					</a>
+				</td>
+				<td width="171px" height="50px" align="center">
+					<a href="cuento2.html" target="contenido">
+						<p>Los tres cerditos y el lobo</p>
+						<img src="recursos/imagenes/cerditos/cerdtos_min.png" width="150px" height="75px">
+					</a>
+				</td>
+				<td width="171px" height="50px" align="center">
+					<a href="cuento3.html" target="contenido">
+						<p>La hormiga y la cigarra</p>
+						<img src="recursos/imagenes/hormiga/hormiga_min.png" width="150px" height="75px">
+					</a>
+				</td>
+				<td width="171px" height="50px" align="center">
+					<a href="cuento4.html" target="contenido">
+						<p>El león y el ratón</p>
+						<img src="recursos/imagenes/leon/leonyraton_min.png" width="150px" height="75px">
+					</a>
+				</td>
+				<td width="171px" height="50px" align="center">
+					<a href="cuento5.html" target="contenido">
+						<p>Las medias de los flamencos</p>
+						<img src="recursos/imagenes/flamencos/flam_min_2.png" width="150px" height="75px">
+					</a>
+				</td>
+				<td width="171px" height="50px" align="center">
+					<a href="juegos.html" target="contenido">
+						<p>Juegos</p>
+						<img src="recursos/imagenes/flamencos/juegos.png" width="150px" height="75px">
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="contenido" colspan="7">
+					<iframe name="contenido" src="inicio.html" width="1200px" height="600px" allowtransparent="yes" frameborder="0">
+					
+					</iframe>
+				</td>
+			</tr>
+			<tr>
+				<td class="footer" colspan="7">
+					<p>© Todos los derechos reservados Instituto tecnologico de Tuxtepec 2025</p>
+					<p>Diseñador: Juan de Jesús Bautista García</p>
+					<p>Desarrollo de Aplicaciones Web</p>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

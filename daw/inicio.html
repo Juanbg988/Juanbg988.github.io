@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+	<style>
+		body{
+			margin:0;
+			font-family: Verdana, sans-serif;
+		}
+		.td-bienvenido{
+			text-align:center;
+			background:#ffffff;
+			border-radius:25px;
+			width:400px;
+			animation: animarTexto 2s infinite alternate ease-in-out;
+		}
+		.td-contenido{
+			border-radius:50px 50px 50px 50px;
+		}
+		.introd{
+			background-image: url("recursos/imagenes/hoja1.png");
+			background-repeat:no-repeat;
+			background-size: 680px 400px;
+			background-position:center;
+			style=overflow:auto;
+			width:630px;
+			height:500px;
+		}
+		.introd p{
+			text-align:center;
+			font-size:16px;
+			color:#0a0a0a;
+		}
+		.demostrar img{
+			padding:10px 25px;
+			background:#f4f4f4;
+			border-radius: 25px 25px 25px 25px;
+		}
+		@keyframes animarTexto {
+		    0%   { color: #ff6600; transform: scale(1.3); }
+		    50%  { color: #00ff00; transform: scale(1.5); }
+		    100% { color: #ff6600; transform: scale(1.3); }
+		}
+	</style>
+</head>
+<body>
+	<table width="1150px" height="0px" align="center" border="0">
+		<tr>
+			<td align="center">
+				<div class="td-bienvenido">
+					<h1>!Bienvenido!</h1>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="td-contenido" align="center" background="recursos/imagenes/moroccan-flower-dark.png">
+				<div class="introd">
+					<p style="padding-top: 110px">¡Bienvenido a Cuenta Cuentos! Aquí podrás sumergirte en un mundo lleno de aventuras, imaginación y diversión.</p>
+					<p>Explora los cuentos, descubre personajes fascinantes y aprende mientras te diviertes.</p>
+    					<p>Usa el menú de juegos y cuentos para elegir tu historia favorita y comienza tu viaje literario.</p>
+					<img src="recursos/imagenes/spreguntas.d5610b7.png" width="150px" height="135px">
+				</div>
+				<div class="demostrar">
+					<img src="recursos/imagenes/Caperucita-Roja2.png" width="150px" height="135px">
+					<img src="recursos/imagenes/leon-raton.png" width="150px" height=135px">
+					<img src="recursos/imagenes/lasmediasdelosflamencos.jpg" width="150px" height="135px">
+				</div>
+				<blockquote style="font-style:Montserrat,italic; color:#ffd700; margin:30px; font-size:20px">
+    					"Si no te gusta leer, no has encontrado el libro correcto." – J.K. Rowling.
+				</blockquote>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
