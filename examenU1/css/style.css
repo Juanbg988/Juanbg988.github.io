@@ -1,0 +1,52 @@
+:root{
+    --padding-container: 100px 0;
+    --color-title: #001A49
+}
+
+body{
+    background: #043;
+}
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+header{
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: #fff;
+    background: #fff4;
+}
+
+.nav{
+    --padding-container:0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-title{ 
+    font-family: 'Montserrat', sans-serif; 
+    letter-spacing: 0.2em; 
+    color: black; 
+    text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF; 
+} 
+
+.nav-link{
+    margin-left: auto;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 2em;
+}
+
+.nav-items{
+    list-style: none;    
+}
