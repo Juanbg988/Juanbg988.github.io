@@ -1,0 +1,99 @@
+@import url("style-pags.css");
+
+.hero {
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../img/fauna/fauna-header.jpg');
+}
+
+/* ======== MAIN ======== */
+main {
+    padding: 3rem 8%;
+    background-color: #fff;
+    border-radius: 30px 30px 0 0;
+    margin-top: -60px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    color: #145a32;
+    border-left: 6px solid #27ae60;
+    padding-left: 10px;
+    margin-bottom: 1rem;
+}
+
+.text {
+    line-height: 1.8;
+    color: #444;
+}
+
+/* ======== GALERÍA ======== */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+.galeria img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+    transform: scale(1.05);
+}
+
+/* ======== INFO CARDS ======== */
+.info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    background: #e8f5e9;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* ======== FOOTER ======== */
+footer {
+    background-color: #145a32;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* ======== ANIMACIONES ======== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubicación | Tuxtepec</title>
+  <link rel="shortcut icon" href="../img/conejo-lo.jpeg" type="image/x-icon"/>
+  <link rel="stylesheet" href="../css/3style-ubicacion.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1 class="nav-logo">Tuxtepec</h1> 
+        <br>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#top" class="nav-link"></a></li>
+          <li class="nav-item"><a href="#top" class="nav-link"></a></li>
+          <li class="nav-item"><a href="#top" class="nav-link"></a></li>
+          
+          <li class="nav-item"><a href="#top" class="nav-link"></a></li>
+          <li class="nav-item"><a href="#top" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="#mapa" class="nav-link">Mapa</a></li>
+          <li class="nav-item"><a href="#clima" class="nav-link">Clima</a></li>
+          <li class="nav-item"><a href="#rutas" class="nav-link">Rutas</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero fade-in">
+      <h1 class="hero-title">Ubicación de Tuxtepec</h1>
+      <p class="hero-subtitle">Conoce dónde se encuentra el corazón del Papaloapan</p>
+    </div>
+    <a href="#mapa" class="btn-primary" >Ver Mapa</a>
+    
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- DESCRIPCIÓN -->
+    <section class="contenido fade-up">
+      <h2>¿Dónde está Tuxtepec?</h2>
+      <p>
+        San Juan Bautista Tuxtepec es un municipio ubicado al norte del estado de Oaxaca, México. 
+        Limita con Veracruz, Valle Nacional, Loma Bonita y Jalapa de Díaz.
+      </p>
+    </section>
+
+    <!-- MAPA CON BUSCADOR -->
+    <section class="bloque fade-up" id="mapa">
+      <h2>Mapa del Municipio</h2>
+      <input type="text" id="map-search" placeholder="Busca una dirección..." />
+      <button id="search-btn" class="btn-primary">Buscar</button>
+      <div id="map-container" class="map-container fade-in">
+        <iframe 
+          id="google-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60245.73260206956!2d-96.16243757868245!3d18.08854704323792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce4c969b8d62fb%3A0xd6b3d865725ff5c1!2sSan%20Juan%20Bautista%20Tuxtepec%2C%20Oax.!5e0!3m2!1ses!2smx!4v1728956400000!5m2!1ses!2smx" 
+          width="100%" 
+          height="400" 
+          style="border:0; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.2);" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+      <a href="#top" class="btn-secondary btn-top">Volver Inicio</a>
+    </section>
+
+    <!-- CLIMA -->
+<section class="bloque fade-up" id="clima">
+  <h2>Clima Actual en Tuxtepec</h2>
+
+  <!-- Tarjeta animada de clima -->
+  <div class="weather-card animated-weather">
+    <div class="weather-icon" id="weather-icon">
+      <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Clima" />
+    </div>
+    <div class="weather-info">
+      <h3 id="city">Tuxtepec</h3>
+      <p id="temperature">26°C</p>
+      <p id="description">Soleado</p>
+      <p id="precipitation">Precipitaciones: 7%</p>
+      <p id="humidity">Humedad: 76%</p>
+      <p id="wind">Viento: 3 km/h</p>
+      <p id="uv-index">Índice UV: 5</p>
+    </div>
+  </div>
+
+  <script>
+    const apiKey = "TU_API_KEY"; // Reemplaza con tu API Key
+    const ciudad = "Tuxtepec,MX";
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`)
+      .then(res => res.json())
+      .then(data => {
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+        document.getElementById("weather-icon").innerHTML = `<img src="${iconUrl}" alt="${data.weather[0].description}" />`;
+        document.getElementById("city").textContent = data.name;
+        document.getElementById("temperature").textContent = `${data.main.temp.toFixed(1)}°C`;
+        document.getElementById("description").textContent = data.weather[0].description;
+        document.getElementById("humidity").textContent = `Humedad: ${data.main.humidity}%`;
+        document.getElementById("wind").textContent = `Viento: ${data.wind.speed} m/s`;
+        // Precipitaciones y UV solo si vienen en la respuesta, OpenWeatherMap básico no siempre incluye
+        document.getElementById("precipitation").textContent = data.rain ? `Precipitaciones: ${data.rain["1h"] || 0} mm` : "Precipitaciones: 0 mm";
+        document.getElementById("uv-index").textContent = "Índice UV: N/A"; // Requiere otra API para UV
+      })
+      .catch(err => console.log(err));
+  </script>
+</section>
+
+
+
+    <!-- GALERÍA DE IMÁGENES -->
+    <section class="bloque2 fade-up2" id="galeria2">
+      <h2>Galería de Tuxtepec</h2>
+      <div class="gallery">
+        <img src="../img/ubicacion/entrada_tuxt.jpg" alt="Entrada" class="gallery-item">
+        <img src="../img/ubicacion/rio.jpg" alt="Río" class="gallery-item">
+        <img src="../img/ubicacion/monta.png" alt="Montañas" class="gallery-item">
+        <img src="../img/ubicacion/mercado.png" alt="Mercado" class="gallery-item">
+        <img src="../img/ubicacion/iglesia.png" alt="iglesia" class="gallery-item">
+        <img src="../img/ubicacion/arte-urbano.png" alt="Arte arte-urbano" class="gallery-item">
+      
+      </div>
+    </section>
+<!-- RUTAS -->
+<!-- RUTAS -->
+<section class="bloque fade-up" id="rutas" style="padding:2rem 1rem; max-width:600px; margin:auto;">
+  <h2 style="text-align:left; font-family: Arial, sans-serif; color:#333; margin-bottom:1rem;">Cómo llegar</h2>
+  <ul style="list-style:none; padding:0; margin:0; font-family: Arial, sans-serif; color:#555;">
+    <li style="background:#f0f8ff; margin-bottom:0.8rem; padding:0.8rem 1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+      🚗 <strong>Desde Oaxaca:</strong> 
+      <a href="https://goo.gl/maps/4j3Q5m6n5Jz" target="_blank" style="color:#0077cc; text-decoration:none;">Carretera Federal 175 (~5 hrs)</a>
+    </li>
+    <li style="background:#f0f8ff; margin-bottom:0.8rem; padding:0.8rem 1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+      🚗 <strong>Desde Veracruz:</strong> 
+      <a href="https://goo.gl/maps/3k2Q5m6n5Jz" target="_blank" style="color:#0077cc; text-decoration:none;">Carretera Federal 145D (~3 hrs)</a>
+    </li>
+    <li style="background:#f0f8ff; margin-bottom:0.8rem; padding:0.8rem 1rem; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+      🚌 <strong>Autobús:</strong> 
+      Salidas directas desde Oaxaca, Veracruz, Puebla y CDMX. Consulta horarios en 
+      <a href="https://www.ado.com.mx" target="_blank" style="color:#0077cc; text-decoration:none;">ADO</a> o 
+      <a href="https://www.autobusesunidos.com.mx" target="_blank" style="color:#0077cc; text-decoration:none;">AU</a>
+    </li>
+  </ul>
+</section>
+
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer fade-up">
+    <div>
+      <p>&copy; 2025 Tuxtepec, Oaxaca</p>
+      <p>Todos los derechos reservados — Equipo 1</p>
+    </div>
+  </footer>
+
+  <script src="../js/ubica.js"></script>
+  <script src="../js/clima.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+/* estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/*imagen pasando*/
+
+.hero-slider {
+  position: relative;
+  height: 75vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Capa gris normal */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(172, 159, 221, 0.3);
+  z-index: 1;
+  transition: opacity 0.5s;
+}
+
+.hero-slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 2;
+}
+
+/*conejogif*/
+
+#rabbitImage {
+  width: 60%;
+  height: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -10%);
+  object-fit: contain;
+  z-index: 3;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.slides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slides img.active {
+  opacity: 1;
+  z-index: 0;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  margin-top: -200px;
+  font-size: 3rem;
+  color: white; /* color del texto */
+  animation: glow 2s infinite;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  animation: slideDown 1.5s ease;
+}
+.hero p {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+}
+.hero-text p {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+/* Grids y tarjetas */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, auto));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card h3 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+.card p {
+  padding: 0 10px 10px;
+  font-size: 1rem;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  background: #228b22;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 1rem auto 1rem auto;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #512929;
+  color: white;
+  margin-top: 2rem;
+}
+
+/* Animaciones */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #1c1818, 0 0 10px #1c1818;
+  }
+  50% {
+    text-shadow: 0 0 10px rgb(153, 22, 22), 0 0 20px rgb(106, 61, 86);
+  }
+  100% {
+    text-shadow: 0 0 5px #2c1414, 0 0 10px #0b0505;
+  }
+}

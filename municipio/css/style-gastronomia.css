@@ -1,0 +1,107 @@
+@import url('style-pags.css');
+
+/* Galería */
+.galeria {
+    background: var(--secondary-color);
+    margin: 30px 0;
+}
+
+.galeria-container{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    gap: 1em;
+    align-items: center;
+    overflow: hidden;
+}
+
+.galeria-arrow{
+    width: 90%;
+    cursor: pointer;
+}
+
+.galeria-arrow:hover{
+    width: 95%;
+}
+
+.galeria-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.galeria-body-show{
+    pointer-events: unset;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
+
+.galeria-subtitle{
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.galeria-text{
+    flex: 1 1 300px;
+    max-width: 700px;
+}
+
+.galeria-description{
+    background-color: rgba(253, 253, 253, 0.336);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    display: inline-block;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: justify;
+}
+
+.galeria-picture {
+    flex: 1 1 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.galeria-img{
+    width: 250px;
+    max-width: 500px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 5px solid #cacaca;
+}
+
+#galeria-platillos{
+    background: linear-gradient(var(--gradient-color)), url('../img/gastronomia/platillos/platillos.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+#galeria-bebidas{
+    background: linear-gradient(var(--gradient-color)), url('../img/gastronomia/bebidas/bebidas.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+
+#galeria-frutas{
+    background: linear-gradient(var(--gradient-color)), url('../img/gastronomia/frutas/frutas.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+

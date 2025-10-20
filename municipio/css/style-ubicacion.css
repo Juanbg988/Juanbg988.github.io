@@ -1,0 +1,37 @@
+@import url("style-pags.css");
+
+.hero {
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../img/ubicacion/entrada_tuxt.jpg');
+}
+
+h2{
+    font-size: 30px;
+}
+
+/* Section */
+section {
+    padding: 4rem 2rem;
+    max-width: 900px; 
+    margin: auto; 
+}
+
+
+/* Mapa */
+.map-container {
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2); 
+}
+
+ul{
+    list-style: none;
+}
+
+.rutas{
+    background:#f0f8ff;
+    margin-bottom:0.8rem;
+    padding:0.8rem 1rem;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
