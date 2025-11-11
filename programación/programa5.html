@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Nómina del Trabajador</title>
+</head>
+<body>
+    <duv class="contenedor">
+        <h2>🧾 Cálculo de Nómina 🧾</h2>
+    </duv>
+    <div class="contenedor">
+        <form>
+            <p>Nombre del trabajador: <input type="text" id="nombre"></p>
+            <p>Salario diario: <input type="number" id="salario"></p>
+            <p>Horas extras: <input type="number" id="hrsExtras"></p>
+            <p>Año de ingreso: <input type="number" id="anioIngreso"></p>
+            <p>¿Tuvo faltas? 
+                <select id="faltasTrabajador">
+                    <option value="N">No</option>
+                    <option value="S">Sí</option>
+                </select>
+            </p>
+            <p id="campoFaltas" style="display:none;">
+                ¿Fueron justificadas?
+                <select id="faltasJustificadas">
+                    <option value="S">Sí</option>
+                    <option value="N">No</option>
+                </select>
+                <br>
+                Número de faltas: <input type="number" id="numFaltas" value="0">
+            </p>
+            <input type="button" value="Calcular Nómina" onclick="calculoNominaTrabajador()" class="submit">
+        </form>
+
+        <div id="resultado" style="font-weight:bold; font-size:16px; color:navy; margin-top:20px;"></div>
+    </div>
+
+    <script>
+        // Mostrar campos de faltas
+        document.getElementById('faltasTrabajador').addEventListener('change', function() {
+            document.getElementById('campoFaltas').style.display = 
+                (this.value === 'S') ? 'block' : 'none';
+        });
+
+        // Funciones de cálculo
+        function calculoSueldoBruto(salarioDiario, faltas, justificadas) {
+            let diasTrabajados = 30;
+            if (faltas > 0 && justificadas === "N") {
+                diasTrabajados -= faltas;
+            }
+            return salarioDiario * diasTrabajados;
+        }
+
+        function calculoHrsExtras(salarioDiario, hrsExtras) {
+            let pagoHora = salarioDiario / 8;
+            if (hrsExtras <= 9) {
+                return hrsExtras * pagoHora * 2;
+            } else {
+                return hrsExtras * pagoHora * 3;
+            }
+        }
+
+        function calculoAguinaldo(salarioDiario) {
+            return salarioDiario * 15;
+        }
+
+        function calculoISR(percepciones) {
+            return percepciones * 0.267;
+        }
+
+        function calculoSeguro(percepciones) {
+            let invalidezVida = percepciones * 0.0175;
+            let retiroVejez = percepciones * 0.02;
+            return invalidezVida + retiroVejez;
+        }
+
+        function calculoDeducciones(isr, seguro) {
+            return isr + seguro;
+        }
+
+        function calculoSueldoNeto(percepciones, deducciones) {
+            return percepciones - deducciones;
+        }
+
+        // Función principal
+        function calculoNominaTrabajador() {
+            let nombre = document.getElementById("nombre").value;
+            let salarioDiario = parseFloat(document.getElementById("salario").value);
+            let hrsExtras = parseInt(document.getElementById("hrsExtras").value);
+            let anioIngreso = parseInt(document.getElementById("anioIngreso").value);
+            let faltasTrabajador = document.getElementById("faltasTrabajador").value;
+            let faltasJustificadas = (faltasTrabajador === "S") ? document.getElementById("faltasJustificadas").value : "N";
+            let numFaltas = (faltasTrabajador === "S") ? parseInt(document.getElementById("numFaltas").value) : 0;
+            let resultado = document.getElementById("resultado");
+
+            // Validar datos
+            if (!nombre || isNaN(salarioDiario) || isNaN(hrsExtras)) {
+                resultado.innerHTML = "Por favor completa todos los campos correctamente.";
+                return;
+            }
+
+            // Cálculos
+            let sueldoBruto = calculoSueldoBruto(salarioDiario, numFaltas, faltasJustificadas);
+            let horasExtrasPagadas = calculoHrsExtras(salarioDiario, hrsExtras);
+            let aguinaldo = calculoAguinaldo(salarioDiario);
+            let percepciones = sueldoBruto + horasExtrasPagadas + aguinaldo;
+            let isr = calculoISR(percepciones);
+            let seguro = calculoSeguro(percepciones);
+            let deducciones = calculoDeducciones(isr, seguro);
+            let sueldoNeto = calculoSueldoNeto(percepciones, deducciones);
+
+            // Mostrar resultados
+            resultado.innerHTML = `
+                <h3>Resultado de Nómina para ${nombre}</h3>
+                <ul>
+                    <li><strong>Sueldo bruto:</strong> $${sueldoBruto.toFixed(2)}</li>
+                    <li><strong>Horas extras:</strong> $${horasExtrasPagadas.toFixed(2)}</li>
+                    <li><strong>Aguinaldo:</strong> $${aguinaldo.toFixed(2)}</li>
+                    <li><strong>Percepciones totales:</strong> $${percepciones.toFixed(2)}</li>
+                    <li><strong>ISR (26.7%):</strong> -$${isr.toFixed(2)}</li>
+                    <li><strong>Seguro (3.75%):</strong> -$${seguro.toFixed(2)}</li>
+                    <li><strong>Deducciones totales:</strong> -$${deducciones.toFixed(2)}</li>
+                    <li><strong>Sueldo neto:</strong> <span style="color:green;">$${sueldoNeto.toFixed(2)}</span></li>
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>

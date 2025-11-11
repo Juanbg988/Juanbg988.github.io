@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prima vacacional</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>🌴 Cálculo de Prima Vacacional</h2>
+    </div>
+    <div class="contenedor">
+        <form>
+            <p>Ingresa el salario mensual: <input type="number" id="salario"></p>
+            <p>Ingresa el año de ingreso: <input type="number" id="añoIngreso"></p>
+            <input type="button" value="Calcular Prima Vacacional" onclick="calcularPrima()" class="submit">
+        </form>
+
+        <div id="resultado"></div>
+
+        <script>
+            function calcularPrima() {
+                let salario, añoIngreso, diasVacaciones, salarioDiario, añosServicio, primaVacacional;
+                let añoActual = 2025;
+
+                salario = parseInt(document.getElementById("salario").value);
+                añoIngreso = parseInt(document.getElementById("añoIngreso").value);
+                let resultado = document.getElementById("resultado");
+
+                if (isNaN(salario) || isNaN(añoIngreso) || salario <= 0 || añoIngreso <= 0) {
+                    resultado.innerHTML = "<p style='color:red;'>Por favor ingresa datos válidos.</p>";
+                    return;
+                }
+
+                salarioDiario = salario / 30;
+                añosServicio = añoActual - añoIngreso;
+
+                if (añosServicio == 1){
+                    diasVacaciones = 12;
+                } else if (añosServicio == 2){
+                    diasVacaciones = 14;
+                } else if (añosServicio == 3){
+                    diasVacaciones = 16;
+                } else if (añosServicio == 4){
+                    diasVacaciones = 18;
+                } else if (añosServicio == 5){
+                    diasVacaciones = 20;
+                } else if (añosServicio >= 6 && añosServicio <= 10){
+                    diasVacaciones = 22;
+                } else if (añosServicio >= 11 && añosServicio <= 15){
+                    diasVacaciones = 24;
+                } else if (añosServicio >= 16 && añosServicio <= 20){
+                    diasVacaciones = 26;
+                } else if (añosServicio >= 21 && añosServicio <= 25){
+                    diasVacaciones = 28;
+                } else if (añosServicio >= 26 && añosServicio <= 30){
+                    diasVacaciones = 30;
+                } else if (añosServicio >= 31 && añosServicio <= 35){
+                    diasVacaciones = 32;
+                } else {
+                    diasVacaciones = 0;
+                }
+
+                primaVacacional = salarioDiario * diasVacaciones * 0.25;
+
+                resultado.innerHTML = `
+                    <p>El salario mensual es: $${salario}</p>
+                    <p>El salario diario es: $${salarioDiario.toFixed(2)}</p>
+                    <p>Año de ingreso a la empresa: ${añoIngreso}</p>
+                    <p>Años de servicio en la empresa: ${añosServicio}</p>
+                    <p>Días de vacaciones: ${diasVacaciones} días</p>
+                    <p style="font-size:1.2rem; font-weight:bold; color:navy;">
+                        Prima vacacional: $${primaVacacional.toFixed(2)}
+                    </p>
+                    <img src="img/vacaciones.png" alt="vacaciones" width="120">
+                `;
+            }
+        </script>
+    </div>
+</body>
+</html>

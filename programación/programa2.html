@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio del Alumno</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>👨‍🏫CALCULAR PROMEDIO👨‍🏫</h2>
+    </div>
+    <div class="contenedor">
+        <form>
+            <p>Nombre del alumno: <input type="text" id="nombre"></p>
+            <p>Calificación 1: <input type="number" id="c1"></p>
+            <p>Calificación 2: <input type="number" id="c2"></p>
+            <p>Calificación 3: <input type="number" id="c3"></p>
+            <p>Calificación 4: <input type="number" id="c4"></p>
+            <p>Calificación 5: <input type="number" id="c5"></p>
+            <input type="button" value="Calcular Promedio" onclick="calcularPromedio()" class="submit">
+        </form>
+
+        <p id="resultado" style="font-weight: bold; font-size: 18px; color: navy;"></p>
+
+        <script>
+            function calcularPromedio() {
+                let nombre = document.getElementById('nombre').value;
+                let calificaciones = [];
+                let suma = 0;
+                let resultado = document.getElementById('resultado');
+
+                // Tomar las 5 calificaciones
+                for (let i = 1; i <= 5; i++) {
+                    let calif = parseFloat(document.getElementById('c' + i).value);
+                    if (isNaN(calif) || calif < 0 || calif > 10) {
+                        resultado.innerHTML = `Por favor ingresa calificaciones válidas (0 a 10) en todos los campos.`;
+                        return;
+                    }
+                    calificaciones.push(calif);
+                    suma += calif;
+                }
+
+                let promedio = suma / 5;
+                let mensaje = "";
+
+                if (promedio >= 9) {
+                    mensaje = `${nombre}, tu promedio es ${promedio.toFixed(2)} — ¡Excelente! <img src="img/excelente.png" alt="excelente" width="120">`;
+                } else if (promedio >= 7) {
+                    mensaje = `${nombre}, tu promedio es ${promedio.toFixed(2)} — ¡Bien hecho! <img src="img/bien.png" alt="bien" width="120">`;
+                } else {
+                    mensaje = `${nombre}, tu promedio es ${promedio.toFixed(2)} — Debes esforzarte más. <img src="img/mejorar.png" alt="mejorar" width="120">`;
+                }
+
+                resultado.innerHTML = mensaje;
+            }
+        </script>
+    </div>
+</body>
+</html>

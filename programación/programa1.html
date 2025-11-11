@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Tiempo bajo agua</title>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>🌊TIEMPO BAJO EL AGUA🌊</h2>
+    </div>
+    <div class="contenedor">
+        <form>
+            <p>Ingresa el nombre:<input type="text" id="nombre"></p>
+            <p>¿Cuánto tiempo demoras bajo el agua?(minutos):<input type="text" id="tiempo"></p>
+            <input type="button" value="Mostrar" onclick="aquaman()" class="submit">
+        </form>
+        <p id="resultado" style="font-weight: bold; font-size: 18px; color: navy;"></p>
+        <script>
+            function aquaman(){
+                // Ingresar valores
+                let nombre = document.getElementById('nombre').value;
+                let tiempo = parseInt(document.getElementById('tiempo').value);
+                let resultado = document.getElementById('resultado');
+
+
+                // Validar datos
+                if (isNaN(tiempo)){
+                    resultado.innerHTML = "Por favor ingresa un número válido.";
+                    return;
+                }
+
+                if (tiempo==1){
+                    resultado.innerHTML = `${nombre}, eres<strong>: NORMAL</strong>. <img src="img/normal.png" alt="normal" width="120">`;
+                } else if(tiempo < 1) {
+                    resultado.innerHTML = `${nombre}, tienes <strong>: ASMA</strong>. <img src="img/asma.png" alt="asma" width="120">`;
+                } else{
+                    resultado.innerHTML = `${nombre}, eres <strong>: AQUAMAN</strong>. <img src="img/aquaman.png" alt="aquaman" width="120">`;
+                }
+            }
+
+        </script>
+    </div>
+</body>
+</html>

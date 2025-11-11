@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel de Desempeño</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>🎓 Evaluación del Nivel de Desempeño 🎓</h2>
+    </div>
+    <div class="contenedor">
+        <form>
+            <p>Nombre del alumno: <input type="text" id="alumno"></p>
+            <p>Calificación 1: <input type="number" id="c1" min="0" max="100"></p>
+            <p>Calificación 2: <input type="number" id="c2" min="0" max="100"></p>
+            <p>Calificación 3: <input type="number" id="c3" min="0" max="100"></p>
+            <p>Calificación 4: <input type="number" id="c4" min="0" max="100"></p>
+            <p>Calificación 5: <input type="number" id="c5" min="0" max="100"></p>
+
+            <input type="button" value="Evaluar Desempeño" onclick="evaluarDesempeno()" class="submit">
+        </form>
+
+        <div id="resultado"></div>
+
+        <script>
+            function evaluarDesempeno() {
+                let alumno = document.getElementById("alumno").value;
+                let resultado = document.getElementById("resultado");
+
+                // Obtener calificaciones
+                let calificaciones = [];
+                for (let i = 1; i <= 5; i++) {
+                    let valor = parseFloat(document.getElementById("c" + i).value);
+                    if (isNaN(valor) || valor < 0 || valor > 100) {
+                        resultado.innerHTML = "<p style='color:red;'>Por favor ingresa calificaciones válidas entre 0 y 100.</p>";
+                        return;
+                    }
+                    calificaciones.push(valor);
+                }
+
+                // Calcular promedio
+                let suma = calificaciones.reduce((a, b) => a + b, 0);
+                let promedio = suma / 5;
+                let nivel = "";
+                let imagen = "";
+
+                // Determinar nivel de desempeño
+                if (promedio < 70) {
+                    nivel = "Insuficiente 😔";
+                    imagen = "insuficiente.png";
+                } else if (promedio >= 70 && promedio < 80) {
+                    nivel = "Suficiente 🙂";
+                    imagen = "suficiente.png";
+                } else if (promedio >= 80 && promedio < 90) {
+                    nivel = "Bueno 😃";
+                    imagen = "bueno.png";
+                } else if (promedio >= 90 && promedio < 100) {
+                    nivel = "Muy Bueno 🤩";
+                    imagen = "muybueno.png";
+                } else if (promedio === 100) {
+                    nivel = "Excelente 🏆";
+                    imagen = "excelente.png";
+                }
+
+                // Mostrar resultado
+                resultado.innerHTML = `
+                    <p><strong>Alumno:</strong> ${alumno}</p>
+                    <p><strong>Promedio:</strong> ${promedio.toFixed(2)}</p>
+                    <p style="font-size: 1.2rem; font-weight: bold; color: navy;">
+                        Nivel de desempeño: ${nivel}
+                    </p>
+                    <img src="img/${imagen}" alt="${nivel}" width="120">
+                `;
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago de Horas Extras</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>💼 Cálculo de Horas Extras</h2>
+    </div>
+    <div class="contenedor">
+        <form>
+            <p>Nombre del trabajador: <input type="text" id="nombre"></p>
+            <p>Salario diario ($): <input type="number" id="salario"></p>
+            <p>Horas extras trabajadas: <input type="number" id="hrsExtras"></p>
+            <input type="button" value="Calcular Pago" onclick="calcularPago()" class="submit">
+        </form>
+
+        <div id="resultado"></div>
+
+        <script>
+            function calcularPago() {
+                let nombre = document.getElementById('nombre').value;
+                let salario = parseFloat(document.getElementById('salario').value);
+                let hrsExtras = parseFloat(document.getElementById('hrsExtras').value);
+                let resultado = document.getElementById('resultado');
+
+                // Validaciones
+                if (nombre.trim() === "" || isNaN(salario) || isNaN(hrsExtras) || salario <= 0 || hrsExtras < 0) {
+                    resultado.innerHTML = "<p style='color:red;'>Por favor ingresa datos válidos en todos los campos.</p>";
+                    return;
+                }
+
+                let pagoHora = salario / 8;
+                let montoDoble = 0;
+                let montoTriple = 0;
+                let total = 0;
+
+                // Cálculo
+                if (hrsExtras <= 9) {
+                    montoDoble = hrsExtras * pagoHora * 2;
+                    total = salario + montoDoble;
+                } else {
+                    montoDoble = 9 * pagoHora * 2;
+                    montoTriple = (hrsExtras - 9) * pagoHora * 3;
+                    total = salario + montoDoble + montoTriple;
+                }
+
+                // Mostrar resultado
+                resultado.innerHTML = `
+                    <p><strong>Trabajador:</strong> ${nombre}</p>
+                    <p><strong>Salario diario:</strong> $${salario.toFixed(2)}</p>
+                    <p><strong>Pago por horas dobles:</strong> $${montoDoble.toFixed(2)}</p>
+                    <p><strong>Pago por horas triples:</strong> $${montoTriple.toFixed(2)}</p>
+                    <p style="font-size: 1.2rem; color: navy; font-weight: bold;">
+                        💰 Total a pagar: $${total.toFixed(2)}
+                    </p>
+                    <img src="img/trabajo.png" alt="trabajo" width="120">
+                `;
+            }
+        </script>
+    </div>
+</body>
+</html>
